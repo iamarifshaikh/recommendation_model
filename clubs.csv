@@ -1,0 +1,61 @@
+club_id, club_name, category_1, category_2, category_3
+1, AI Club, coding, artificial intelligence, python
+2, Python Club, coding, python, data science
+3, JavaScript Club, coding, web development, javascript
+4, Cybersecurity Club, coding, cybersecurity, ethical hacking
+5, Game Development Club, coding, game development, design
+6, Machine Learning Club, coding, machine learning, algorithms
+7, Data Science Club, coding, data science, python
+8, Web Development Club, coding, web development, html
+9, Blockchain Club, coding, blockchain, cryptocurrency
+10, Robotics Club, coding, robotics, automation
+11, PUBG Club, gaming, battle royale, mobile gaming
+12, Call of Duty Club, gaming, first-person shooter, strategy
+13, Fortnite Club, gaming, multiplayer, battle royale
+14, FIFA Club, gaming, sports gaming, football
+15, BGM Club, gaming, mobile gaming, strategy
+16, Valorant Club, gaming, tactical shooter, team gaming
+17, Apex Legends Club, gaming, battle royale, teamwork
+18, Minecraft Club, gaming, sandbox gaming, creativity
+19, League of Legends Club, gaming, multiplayer online, strategy
+20, DOTA 2 Club, gaming, eSports, MOBA games
+21, Gourmet Cooking Club, cooking, gourmet dishes, presentation
+22, Baking Club, cooking, baking, desserts
+23, Italian Cooking Club, cooking, pasta making, italian cuisine
+24, Asian Cooking Club, cooking, asian cuisine, stir-fry
+25, Vegan Cooking Club, cooking, plant-based, healthy recipes
+26, BBQ Club, cooking, grilling, outdoor cooking
+27, Dessert Making Club, cooking, sweets, pastries
+28, French Cooking Club, cooking, french cuisine, fine dining
+29, Sushi Club, cooking, sushi making, japanese cuisine
+30, Home Cooking Club, cooking, family recipes, comfort food
+31, Fiction Book Club, reading, novels, storytelling
+32, Mystery Book Club, reading, detective stories, crime
+33, Fantasy Book Club, reading, fantasy, magic
+34, Sci-Fi Book Club, reading, science fiction, futuristic themes
+35, Historical Fiction Book Club, reading, history, storytelling
+36, Biography Book Club, reading, life stories, historical figures
+37, Poetry Club, reading, poetry writing, literature
+38, Non-Fiction Book Club, reading, real events, biographies
+39, Horror Book Club, reading, thrillers, ghost stories
+40, Classic Literature Club, reading, classics, book discussions
+41, Rock Music Club, music, rock, live concerts
+42, Jazz Music Club, music, jazz, improvisation
+43, Classical Music Club, music, symphonies, orchestras
+44, Hip-Hop Music Club, music, rap, urban culture
+45, Pop Music Club, music, pop, chart hits
+46, Indie Music Club, music, indie, alternative
+47, EDM Music Club, music, electronic, DJing
+48, Country Music Club, music, country, songwriting
+49, Folk Music Club, music, traditional, acoustic
+50, Metal Music Club, music, heavy metal, guitar riffs
+51, Football Club, sports, soccer, team sports
+52, Basketball Club, sports, basketball, shooting hoops
+53, Tennis Club, sports, tennis, racket sports
+54, Cricket Club, sports, cricket, team sports
+55, Swimming Club, sports, swimming, water sports
+56, Volleyball Club, sports, volleyball, beach sports
+57, Hiking Club, sports, hiking, nature exploration
+58, Skiing Club, sports, skiing, winter sports
+59, Running Club, sports, running, endurance
+60, Cycling Club, sports, cycling, road racing
