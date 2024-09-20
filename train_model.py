@@ -1,69 +1,27 @@
 import pandas as pd
 
-# Load and preprocess student data
-def load_students_data(): 
-    students_df = pd.read_csv("./students.csv")
-    # Remove extra spaces from column names
-    students_df.columns = (students_df.columns.str.strip())  
-    # Strip spaces from column names
-    students_df = students_df.rename(columns=lambda x: x.strip()) 
-    # Data Cleaning: Check for missing values
-    
-    if students_df.isnull().values.any():
-        print("Warning: Missing values found in student data. Cleaning...")
-        students_df = students_df.dropna()  # Drop rows with missing values
-
-    # Data Cleaning: Check for duplicate entries
-    if students_df.duplicated().any():
-        print("Warning: Duplicate entries found in student data. Removing duplicates...")
-        students_df = students_df.drop_duplicates()
-
-    print("Students data cleaned and loaded successfully.")
+# Load and preprocess student data from MongoDB
+def load_students_data(db):
+    students_df = pd.DataFrame(list(db.students.find()))
+    if students_df.empty:
+        print("No student data found.")
     return students_df
 
-# Load and preprocess clubs data
-def load_clubs_data():
-    clubs_df = pd.read_csv("./clubs.csv")
 
-    # Remove extra spaces from column names
-    clubs_df.columns = (clubs_df.columns.str.strip())  
-
-    # Strip spaces from column names
-    clubs_df = clubs_df.rename(columns=lambda x: x.strip())  
-
-    # Data Cleaning: Check for missing values
-    if clubs_df.isnull().values.any():
-        print("Warning: Missing values found in club data. Cleaning...")
-        clubs_df = clubs_df.dropna()  # Drop rows with missing values
-
-    # Data Cleaning: Check for duplicate entries
-    if clubs_df.duplicated().any():
-        print("Warning: Duplicate entries found in club data. Removing duplicates...")
-        clubs_df = clubs_df.drop_duplicates()
-
-    print("Clubs data cleaned and loaded successfully.")
+# Load and preprocess clubs data from MongoDB
+def load_clubs_data(db):
+    clubs_df = pd.DataFrame(list(db.clubs.find()))
+    if clubs_df.empty:
+        print("No club data found.")
     return clubs_df
 
 
-# Load and preprocess mentors data
-def load_mentors_data():
-    mentors_df = pd.read_csv("./mentors.csv")
-
-    # Cleaning and processing mentors data (just like clubs)
-    mentors_df.columns = mentors_df.columns.str.strip()
-    mentors_df = mentors_df.rename(columns=lambda x: x.strip())
-
-    if mentors_df.isnull().values.any():
-        print("Warning: Missing values found in mentor data. Cleaning...")
-        mentors_df = mentors_df.dropna()
-
-    if mentors_df.duplicated().any():
-        print("Warning: Duplicate entries found in mentor data. Removing duplicates...")
-        mentors_df = mentors_df.drop_duplicates()
-
-    print("Mentors data cleaned and loaded successfully.")
+# Load and preprocess mentors data from MongoDB
+def load_mentors_data(db):
+    mentors_df = pd.DataFrame(list(db.mentors.find()))
+    if mentors_df.empty:
+        print("No mentor data found.")
     return mentors_df
-
 
 def encode_mentors(mentors_df):
     mentor_columns = ["category_1", "category_2", "category_3"]

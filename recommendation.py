@@ -33,33 +33,9 @@ def recommend_items(similarity_df, student_name, top_n=5):
         raise ValueError(f"Student {student_name} not found.")
 
 
-# You can keep the original recommend_clubs and recommend_mentors functions,
-# but they will now both use the recommend_items function:
-
-
 def recommend_clubs(similarity_df, student_name, top_n=5):
     return recommend_items(similarity_df, student_name, top_n)
 
 
 def recommend_mentors(similarity_df, student_name, top_n=10):
     return recommend_items(similarity_df, student_name, top_n)
-
-
-# def recommend_clubs(similarity_df, student_name, top_n=5):
-#     if student_name in similarity_df.index:
-#         sorted_similarities = similarity_df.loc[student_name].sort_values(
-#             ascending=False
-#         )
-#         return sorted_similarities.head(top_n)
-#     else:
-#         raise ValueError(f"Student {student_name} not found.")
-
-
-# def recommend_mentors(similarity_df, student_name, top_n=10):
-#     if student_name in similarity_df.index:
-#         sorted_similarities = similarity_df.loc[student_name].sort_values(
-#             ascending=False
-#         )
-#         return sorted_similarities.head(top_n)
-#     else:
-#         raise ValueError(f"Student {student_name} not found.")
