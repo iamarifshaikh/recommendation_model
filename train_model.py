@@ -24,7 +24,7 @@ def load_students_data():
 # Load and preprocess clubs data
 def load_clubs_data():
     clubs_df = pd.read_csv("./clubs.csv")
-    
+
     # Remove extra spaces from column names
     clubs_df.columns = (clubs_df.columns.str.strip())  
 
@@ -44,6 +44,35 @@ def load_clubs_data():
     print("Clubs data cleaned and loaded successfully.")
     return clubs_df
 
+
+# Load and preprocess mentors data
+def load_mentors_data():
+    mentors_df = pd.read_csv("./mentors.csv")
+
+    # Cleaning and processing mentors data (just like clubs)
+    mentors_df.columns = mentors_df.columns.str.strip()
+    mentors_df = mentors_df.rename(columns=lambda x: x.strip())
+
+    if mentors_df.isnull().values.any():
+        print("Warning: Missing values found in mentor data. Cleaning...")
+        mentors_df = mentors_df.dropna()
+
+    if mentors_df.duplicated().any():
+        print("Warning: Duplicate entries found in mentor data. Removing duplicates...")
+        mentors_df = mentors_df.drop_duplicates()
+
+    print("Mentors data cleaned and loaded successfully.")
+    return mentors_df
+
+
+def encode_mentors(mentors_df):
+    mentor_columns = ["category_1", "category_2", "category_3"]
+    encoded_mentors = (
+        pd.get_dummies(mentors_df[mentor_columns].stack()).groupby(level=0).sum()
+    )
+    encoded_mentors.columns = encoded_mentors.columns.str.strip()
+    mentors_df = pd.concat([mentors_df, encoded_mentors], axis=1)
+    return mentors_df
 
 # Function to encode interests into dummy variables
 def encode_interests(students_df):
@@ -71,7 +100,7 @@ def encode_clubs(clubs_df):
     return clubs_df
 
 
-def align_features(students_df, clubs_df):
+def align_features(students_df, clubs_df,mentors_df):
     # Get all unique columns from both dataframes (only dummy-encoded ones)
     student_feature_columns = students_df.columns.difference(
         ["student_id", "name", "interest_1", "interest_2"]
@@ -79,7 +108,9 @@ def align_features(students_df, clubs_df):
     club_feature_columns = clubs_df.columns.difference(
         ["club_id", "club_name", "category_1", "category_2", "category_3"]
     )
-    all_columns = student_feature_columns.union(club_feature_columns)
+    mentor_feature_columns = mentors_df.columns.difference(["mentor_id", "mentor_name", "category_1", "category_2", "category_3"])
+
+    all_columns = student_feature_columns.union(club_feature_columns).union(mentor_feature_columns)
 
     # Reindex both dataframes to ensure they have the same columns
     students_df = students_df.reindex(
@@ -91,4 +122,10 @@ def align_features(students_df, clubs_df):
         + list(all_columns),
         fill_value=0,
     )
-    return students_df, clubs_df
+
+    mentors_df = mentors_df.reindex(
+        columns=["mentor_id", "mentor_name", "category_1", "category_2", "category_3"]
+        + list(all_columns),
+        fill_value=0,
+    )
+    return students_df, clubs_df, mentors_df
